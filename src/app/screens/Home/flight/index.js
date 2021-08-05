@@ -70,7 +70,7 @@ const Flight = (props) => {
         </View>
 
         <View style={Style.flightHolder}>
-          <TouchableOpacity style={Style.submit} onPress={() => props.search(useSearchParameters())}>
+          <TouchableOpacity style={Style.submit} onPress={ () => passenger !== 0 ? props.search(useSearchParameters()): alert("Invalid Passenger Value")}>
             <Text style={Style.submitText}>Search Flight</Text>
           </TouchableOpacity>
         </View>
@@ -85,8 +85,9 @@ const Flight = (props) => {
     setShowPicker(false)
      }}
     >
-  <Picker.Item label="DXB" value="Dubai" />
-  <Picker.Item label="FRN" value="France" />
+  <Picker.Item label="DXB" value="DXB" />
+  <Picker.Item label="FRN" value="FRN" />
+    <Picker.Item label="NGR" value="NGR" />
 </Picker>
 </View>
 }

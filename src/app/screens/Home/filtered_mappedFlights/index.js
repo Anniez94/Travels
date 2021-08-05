@@ -63,14 +63,13 @@ const FilteredList = props => {
 
  const searchFlight = (flightSearch) => {
 
-     let flightSearchMapping = Data.map(obj => {
+     let flightSearchMapping = Data.filter(obj => {
        if(obj.arrival === flightSearch.to && obj.departure === flightSearch.from && obj.noOfSeatsLeft > flightSearch.passenger){
         return obj
        }
-     })
-     return setData(flightSearchMapping)
-  }
+     });
 
+     return setData(flightSearchMapping)
   }
 
   useEffect(() => {

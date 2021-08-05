@@ -24,23 +24,25 @@ const Home = () => {
   const [location, setLocation] = useState('Sydney Airport');
   const [showLocationDetails, setShowLocationDetails] = useState(false);
   const [search, setSearch] = useState('');
+  let result;
 
   const getGeolocation = () => {
     // Get User's current position
+
     Geolocation.getCurrentPosition(
       position => {
         // alert(position.coords.latitude);
         if (position.coords.latitude) {
           const key = '6a494632f9714d37b3d6092f19b250f3';
-          // opencage.geocode({ key, q: `${6.515620}, ${3.344695}` }).then(response => {
-          //   result = response.results[0];
+          opencage.geocode({ key, q: `${6.515620}, ${3.344695}` }).then(response => {
+            result = response.results[0];
 
           // Check if Device is an emulator. If it is use default location, else update "setLocation" to the User's location
-          // if(DeviceInfo.useIsEmulator().result === true){
-          //   setLocation(result.formatted)
-          // }
-          //
-          // });
+          if(DeviceInfo.useIsEmulator().result === true){
+            setLocation(result.formatted)
+          }
+          
+          });
         }
       },
       error => {
